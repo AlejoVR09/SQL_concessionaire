@@ -44,6 +44,7 @@ drop table marca;
 create table vehiculo (
 	id int primary key auto_increment, 
     name varchar(20),
+    precio float,
     localizacion int, 
     constraint foreign key (localizacion) references empresa(nit),
     marca int,
@@ -116,3 +117,50 @@ create table componente (
 );
 
 drop table componentes;
+
+create table componente (
+	id int auto_increment primary key,
+    name varchar(30),
+    precio int
+);
+
+drop table componentes;
+
+create table vendedor (
+	doc int auto_increment primary key,
+    name varchar(30),
+    nit int, 
+    constraint foreign key (nit) references empresa(nit),
+    domicilio int, 
+    constraint foreign key (domicilio) references domicilio(id)
+);
+
+drop table vendedor;
+
+create table medio_pago (
+	id int auto_increment primary key,
+    name varchar(30)
+);
+
+create table venta (
+	id int auto_increment primary key,
+    vehiculo int,
+    constraint foreign key (vehiculo) references vehiculo(id),
+    vendedor int,
+    constraint foreign key (vendedor) references vendedor(doc),
+    medio_pago int,
+    constraint foreign key (medio_pago) references medio_pago(id)
+);
+
+drop table venta;
+
+create table venta_componente (
+	id int auto_increment primary key,
+    importado boolean,
+    extra int,
+    constraint foreign key (extra) references extra_comp(id),
+    venta int,
+    constraint foreign key (extra) references venta(id)
+);
+
+drop table venta_componente;
