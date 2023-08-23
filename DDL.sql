@@ -160,7 +160,7 @@ create table venta_componente (
     extra int,
     constraint foreign key (extra) references extra_comp(id),
     venta int,
-    constraint foreign key (extra) references venta(id)
+    constraint foreign key (venta) references venta(id)
 );
 
 drop table venta_componente;

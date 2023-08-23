@@ -68,7 +68,8 @@ insert into vendedor (name, nit, domicilio) values
 insert into venta (vehiculo, vendedor, medio_pago) values (1,1,1);
     
 insert into venta_componente (importado, extra, venta) values 
-    (true,1,1);
+    (true,2,1),
+    (false,1,1);
 
 select * from empresa;
 select * from concesionario;
